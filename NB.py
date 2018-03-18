@@ -13,7 +13,6 @@ POS_LABEL = 'pos'
 NEG_LABEL = 'neg'
 
 
-###### DO NOT MODIFY THIS FUNCTION #####
 def tokenize_doc(doc):
     """
     Tokenize a document and return its bag-of-words representation.
@@ -26,7 +25,7 @@ def tokenize_doc(doc):
     for token in lowered_tokens:
         bow[token] += 1.0
     return dict(bow)
-###### END FUNCTION #####
+
 
 
 def n_word_types(word_counts):
@@ -79,7 +78,7 @@ class NaiveBayes:
         """
         This function processes the entire training set using the global PATH
         variable above.  It makes use of the tokenize_doc and update_model
-        functions you will implement.
+        functions.
         """
 
         pos_path = os.path.join(self.train_dir, POS_LABEL)
@@ -137,7 +136,6 @@ class NaiveBayes:
         label - the sentiment of the document (either postive or negative)
         stop_word - a boolean flag indicating whether to stop word or not
 
-        Make sure when tokenizing to lower case all of the tokens!
         """
 
         bow = self.tokenize_doc(doc)
@@ -160,7 +158,6 @@ class NaiveBayes:
 
     def p_word_given_label_and_pseudocount(self, word, label, alpha):
         """
-        Implement me!
 
         Returns the probability of word given label wrt psuedo counts.
         alpha - pseudocount parameter
@@ -171,7 +168,6 @@ class NaiveBayes:
 
     def log_likelihood(self, bow, label, alpha):
         """
-        Implement me!
 
         Computes the log likelihood of a set of words give a label and pseudocount.
         bow - a bag of words (i.e., a tokenized document)
@@ -185,7 +181,6 @@ class NaiveBayes:
 
     def log_prior(self, label):
         """
-        Implement me!
 
         Returns the log prior of a document having the class 'label'.
         """
@@ -194,7 +189,6 @@ class NaiveBayes:
 
     def unnormalized_log_posterior(self, bow, label, alpha):
         """
-        Implement me!
 
         Computes the unnormalized log posterior (of doc being of class 'label').
         bow - a bag of words (i.e., a tokenized document)
@@ -204,7 +198,6 @@ class NaiveBayes:
 
     def classify(self, bow, alpha):
         """
-        Implement me!
 
         Compares the unnormalized log posterior for doc for both the positive
         and negative classes and returns the either POS_LABEL or NEG_LABEL
@@ -222,7 +215,6 @@ class NaiveBayes:
 
     def likelihood_ratio(self, word, alpha):
         """
-        Implement me!
 
         Returns the ratio of P(word|pos) to P(word|neg).
         """
@@ -259,7 +251,6 @@ class NaiveBayes:
     
     def evaluate_classifier_accuracy(self, alpha):
         """
-        DO NOT MODIFY THIS FUNCTION
 
         alpha - pseudocount parameter.
         This function should go through the test data, classify each instance and
